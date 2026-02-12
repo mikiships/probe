@@ -26,4 +26,4 @@
 ## Blockers
 - **npm publish:** `npm adduser` required (authentication blocked) -- skipped per instructions
 - **X/Twitter thread:** Ready for posting (see X-TWITTER-THREAD-DRAFT.md) -- awaiting Josh approval
-- **GitHub Releases page:** Requires build artifact generation + GitHub CLI setup
+- ~~**GitHub Releases page:** Requires build artifact generation + GitHub CLI setup~~ **RESOLVED**
