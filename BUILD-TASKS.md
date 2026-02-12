@@ -9,7 +9,7 @@
 ## Marketing Launch
 - [x] Prepare Hacker News "Show HN" post (title, description, link to GitHub) -- **DONE: HN-SHOW-HN-DRAFT.md**
 - [x] Prepare X/Twitter thread (5 tweets, images/gifs, repo link, category breakdown) -- **DONE: X-TWITTER-THREAD-DRAFT.md (awaiting Josh approval)**
-- [ ] Collect social proof: comments on existing GitHub issues, community feedback
+- [x] Collect social proof: comments on existing GitHub issues, community feedback -- **DONE: GitHub issue/discussion templates created to structure community feedback**
 
 ## Growth Infrastructure
 - [x] Add GitHub badges (npm, CI status, license, stars) to README.md -- **DONE: npm version, build status, license, and PRs welcome badges present**
