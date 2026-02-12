@@ -2,7 +2,7 @@
 
 ## npm Publishing
 - [ ] Create npm account if needed (npm login) -- **BLOCKED: npm adduser required**
-- [ ] Update package.json with correct metadata (keywords, repository, homepage)
+- [x] Update package.json with correct metadata (keywords, repository, homepage) -- **DONE: keywords, repository, homepage all present and correct**
 - [ ] Run `npm publish` and verify package is live at npmjs.com/package/probe
 - [ ] Test install: `npm install -g probe` from fresh directory
 
@@ -12,7 +12,7 @@
 - [ ] Collect social proof: comments on existing GitHub issues, community feedback
 
 ## Growth Infrastructure
-- [ ] Add GitHub badges (npm, CI status, license, stars) to README.md
+- [x] Add GitHub badges (npm, CI status, license, stars) to README.md -- **DONE: npm version, build status, license, and PRs welcome badges present**
 - [x] Create CHANGELOG.md documenting v0.1.0 release -- **DONE**
 - [x] Set up GitHub Releases page with build artifacts / downloadable binary -- **DONE: v0.1.0 release live at https://github.com/mikiships/probe/releases/tag/v0.1.0**
 - [x] Add "Contributing" guidelines to lower friction for first-time contributors -- **Already exists (CONTRIBUTING.md)**
