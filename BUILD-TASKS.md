@@ -14,7 +14,7 @@
 ## Growth Infrastructure
 - [ ] Add GitHub badges (npm, CI status, license, stars) to README.md
 - [x] Create CHANGELOG.md documenting v0.1.0 release -- **DONE**
-- [ ] Set up GitHub Releases page with build artifacts / downloadable binary
+- [x] Set up GitHub Releases page with build artifacts / downloadable binary -- **DONE: v0.1.0 release live at https://github.com/mikiships/probe/releases/tag/v0.1.0**
 - [x] Add "Contributing" guidelines to lower friction for first-time contributors -- **Already exists (CONTRIBUTING.md)**
 
 ## First Week Goals
