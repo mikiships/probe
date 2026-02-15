@@ -16,12 +16,10 @@
   "keywords": [
     "ai",
     "agent",
+    "security",
     "testing",
     "red-team",
-    "security",
-    "behavioral",
-    "evaluation",
-    "probe"
+    "prompt-injection"
   ],
   "author": "mikiships",
   "license": "MIT",
@@ -30,6 +28,18 @@
     "url": "https://github.com/mikiships/probe.git"
   },
   "homepage": "https://github.com/mikiships/probe#readme",
+  "bugs": {
+    "url": "https://github.com/mikiships/probe/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist/",
+    "README.md",
+    "LICENSE",
+    "scenarios/"
+  ],
   "dependencies": {
     "chalk": "^5.3.0",
     "commander": "^12.0.0",
