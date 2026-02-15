@@ -1,5 +1,5 @@
 {
-  "name": "agent-probe",
+  "name": "@mordecai1010/agent-probe",
   "version": "0.1.0",
   "description": "Red-team your AI agent before your users do",
   "type": "module",
@@ -25,7 +25,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mikiships/probe.git"
+    "url": "git+https://github.com/mikiships/probe.git"
   },
   "homepage": "https://github.com/mikiships/probe#readme",
   "bugs": {
