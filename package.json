@@ -4,7 +4,7 @@
   "description": "Red-team your AI agent before your users do",
   "type": "module",
   "bin": {
-    "probe": "./dist/cli.js"
+    "probe": "dist/cli.js"
   },
   "main": "./dist/index.js",
   "scripts": {
