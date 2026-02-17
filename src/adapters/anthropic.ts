@@ -18,7 +18,7 @@ export class AnthropicAdapter implements AgentAdapter {
   }
 
   async chat(
-    messages: Array<{ role: string; content: string }>
+    messages: Array<{ role: string; content: string }>,
   ): Promise<string> {
     const baseUrl = this.config.baseUrl ?? "https://api.anthropic.com";
     const url = `${baseUrl.replace(/\/$/, "")}/v1/messages`;

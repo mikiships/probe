@@ -20,7 +20,7 @@ export class OpenAIAdapter implements AgentAdapter {
   }
 
   async chat(
-    messages: Array<{ role: string; content: string }>
+    messages: Array<{ role: string; content: string }>,
   ): Promise<string> {
     this._lastToolCalls = [];
 

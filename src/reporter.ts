@@ -24,7 +24,7 @@ export function formatConsoleReport(report: ProbeReport): string {
   lines.push("");
   lines.push(`Target: ${report.target}`);
   lines.push(
-    `Scenarios: ${report.totalScenarios} tests across ${Object.keys(report.categories).length} categories`
+    `Scenarios: ${report.totalScenarios} tests across ${Object.keys(report.categories).length} categories`,
   );
   lines.push("");
 
@@ -37,17 +37,15 @@ export function formatConsoleReport(report: ProbeReport): string {
     const label = (CATEGORY_LABELS[cat] ?? cat).padEnd(20);
     const bar = progressBar(stats.passed, stats.total);
     const count = `${stats.passed}/${stats.total} passed`;
-    const failNote =
-      stats.failed > 0 ? ` (${stats.failed} FAIL)` : "";
+    const failNote = stats.failed > 0 ? ` (${stats.failed} FAIL)` : "";
     lines.push(`${label} ${bar} ${count}${failNote}`);
   }
 
   lines.push("");
 
   // Score summary
-  const scoreColor = report.score >= 90 ? "green" : report.score >= 70 ? "yellow" : "red";
   lines.push(
-    `Score: ${report.passed}/${report.totalScenarios} (${report.score}%) -- ${report.failed} failure${report.failed !== 1 ? "s" : ""} detected`
+    `Score: ${report.passed}/${report.totalScenarios} (${report.score}%) -- ${report.failed} failure${report.failed !== 1 ? "s" : ""} detected`,
   );
   lines.push(`Duration: ${(report.durationMs / 1000).toFixed(1)}s`);
 
@@ -60,7 +58,7 @@ export function formatConsoleReport(report: ProbeReport): string {
 
     for (const fail of failures) {
       lines.push(
-        `FAIL [${fail.scenario.severity}] ${fail.scenario.name} (${fail.scenario.id})`
+        `FAIL [${fail.scenario.severity}] ${fail.scenario.name} (${fail.scenario.id})`,
       );
       for (const f of fail.failures) {
         lines.push(`  Reason: ${f.reason}`);
@@ -81,7 +79,11 @@ export function formatJsonReport(report: ProbeReport): string {
 
 export function formatHtmlReport(report: ProbeReport): string {
   const scoreClass =
-    report.score >= 90 ? "score-pass" : report.score >= 70 ? "score-warn" : "score-fail";
+    report.score >= 90
+      ? "score-pass"
+      : report.score >= 70
+        ? "score-warn"
+        : "score-fail";
 
   // Build category rows
   const categoryRows = Object.entries(report.categories)

@@ -77,10 +77,7 @@ export class RefusalJudge {
    * Judge a response to see if it's a refusal.
    * Uses keyword detection for clear cases, LLM for ambiguous.
    */
-  async judge(
-    response: string,
-    request: string
-  ): Promise<RefusalJudgment> {
+  async judge(response: string, request: string): Promise<RefusalJudgment> {
     // Check for clear refusal first
     if (this.isClearRefusal(response)) {
       return {
@@ -106,7 +103,7 @@ export class RefusalJudge {
     } catch (error) {
       // Fall back to keyword detection on LLM error
       console.warn(
-        `RefusalJudge LLM call failed: ${error}. Falling back to keyword detection.`
+        `RefusalJudge LLM call failed: ${error}. Falling back to keyword detection.`,
       );
       return {
         isRefusal: false,
@@ -121,7 +118,7 @@ export class RefusalJudge {
    */
   private async judgeLLM(
     response: string,
-    request: string
+    request: string,
   ): Promise<RefusalJudgment> {
     if (!this.config.judgeAdapter) {
       throw new Error("No judge adapter available");
@@ -178,7 +175,8 @@ Treat these as NOT refusals:
       };
     } catch (error) {
       throw new Error(
-        `Failed to parse judge response: ${error}. Response was: ${judgeResponse}`
+        `Failed to parse judge response: ${error}. Response was: ${judgeResponse}`,
+        { cause: error },
       );
     }
   }

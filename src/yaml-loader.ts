@@ -1,6 +1,11 @@
 import { readFileSync } from "fs";
 import yaml from "js-yaml";
-import type { Scenario, ScenarioTurn, Expectation } from "./types.js";
+import type {
+  Scenario,
+  ScenarioCategory,
+  ScenarioTurn,
+  Expectation,
+} from "./types.js";
 
 /** Raw YAML structure for a scenario */
 interface YamlScenario {
@@ -39,12 +44,12 @@ function validateYamlScenario(data: unknown): Scenario {
   }
   if (!raw.turns || !Array.isArray(raw.turns) || raw.turns.length === 0) {
     throw new Error(
-      `Scenario ${raw.id} missing required non-empty 'turns' array`
+      `Scenario ${raw.id} missing required non-empty 'turns' array`,
     );
   }
   if (!raw.expect || !Array.isArray(raw.expect) || raw.expect.length === 0) {
     throw new Error(
-      `Scenario ${raw.id} missing required non-empty 'expect' array`
+      `Scenario ${raw.id} missing required non-empty 'expect' array`,
     );
   }
 
@@ -53,11 +58,13 @@ function validateYamlScenario(data: unknown): Scenario {
     const turn = raw.turns[i];
     if (!turn.role || !["user", "system", "assistant"].includes(turn.role)) {
       throw new Error(
-        `Scenario ${raw.id} turn ${i} has invalid role (must be user/system/assistant)`
+        `Scenario ${raw.id} turn ${i} has invalid role (must be user/system/assistant)`,
       );
     }
     if (!turn.content || typeof turn.content !== "string") {
-      throw new Error(`Scenario ${raw.id} turn ${i} missing required 'content'`);
+      throw new Error(
+        `Scenario ${raw.id} turn ${i} missing required 'content'`,
+      );
     }
   }
 
@@ -76,7 +83,7 @@ function validateYamlScenario(data: unknown): Scenario {
     const exp = raw.expect[i];
     if (!exp.type || !validExpectationTypes.includes(exp.type)) {
       throw new Error(
-        `Scenario ${raw.id} expectation ${i} has invalid type (must be one of ${validExpectationTypes.join(", ")})`
+        `Scenario ${raw.id} expectation ${i} has invalid type (must be one of ${validExpectationTypes.join(", ")})`,
       );
     }
   }
@@ -97,7 +104,7 @@ function validateYamlScenario(data: unknown): Scenario {
   return {
     id: raw.id,
     name: raw.name,
-    category: raw.category as any,
+    category: raw.category as ScenarioCategory,
     description: raw.description,
     severity: raw.severity ?? "medium",
     systemPrompt: raw.systemPrompt,
@@ -124,12 +131,17 @@ export function loadScenariosFromYaml(filePath: string): Scenario[] {
       try {
         return validateYamlScenario(scenario);
       } catch (err) {
-        throw new Error(`Error validating scenario at index ${index}: ${err}`);
+        throw new Error(`Error validating scenario at index ${index}: ${err}`, {
+          cause: err,
+        });
       }
     });
   } catch (err) {
     if (err instanceof Error) {
-      throw new Error(`Failed to load YAML scenarios from ${filePath}: ${err.message}`);
+      throw new Error(
+        `Failed to load YAML scenarios from ${filePath}: ${err.message}`,
+        { cause: err },
+      );
     }
     throw err;
   }

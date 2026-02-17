@@ -7,7 +7,11 @@ import { AnthropicAdapter } from "./adapters/anthropic.js";
 import { getScenarios, listCategories } from "./scenarios/index.js";
 import { loadScenariosFromYaml } from "./yaml-loader.js";
 import { runProbe } from "./runner.js";
-import { formatConsoleReport, formatJsonReport, formatHtmlReport } from "./reporter.js";
+import {
+  formatConsoleReport,
+  formatJsonReport,
+  formatHtmlReport,
+} from "./reporter.js";
 import type { AgentAdapter, ScenarioCategory } from "./types.js";
 
 program
@@ -19,24 +23,16 @@ program
   .command("run")
   .description("Run behavioral tests against an agent")
   .requiredOption("--target <url>", "Agent endpoint URL")
-  .option(
-    "--adapter <type>",
-    "Adapter type: openai, anthropic",
-    "openai"
-  )
+  .option("--adapter <type>", "Adapter type: openai, anthropic", "openai")
   .option(
     "--scenarios <categories>",
     "Comma-separated categories or 'all'",
-    "all"
+    "all",
   )
   .option("--custom-scenarios <path>", "Load custom scenarios from YAML file")
   .option("--api-key <key>", "API key for the target")
   .option("--model <model>", "Model to use")
-  .option(
-    "--fail-under <score>",
-    "Exit with error if score below this %",
-    "0"
-  )
+  .option("--fail-under <score>", "Exit with error if score below this %", "0")
   .option("--report <format>", "Output format: console, json, html", "console")
   .option("--report-file <path>", "Output file path (for json/html formats)")
   .option("--timeout <ms>", "Timeout per scenario in milliseconds", "30000")
@@ -135,7 +131,7 @@ program
     const failUnder = parseInt(opts.failUnder, 10);
     if (failUnder > 0 && report.score < failUnder) {
       console.error(
-        `\nScore ${report.score}% is below threshold ${failUnder}%`
+        `\nScore ${report.score}% is below threshold ${failUnder}%`,
       );
       process.exit(1);
     }
@@ -153,7 +149,7 @@ program
       console.log(`  ${category.padEnd(15)} ${count} scenarios`);
     }
     console.log(
-      `\n  Total: ${cats.reduce((sum, c) => sum + c.count, 0)} scenarios`
+      `\n  Total: ${cats.reduce((sum, c) => sum + c.count, 0)} scenarios`,
     );
     console.log("");
   });
