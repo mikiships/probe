@@ -18,7 +18,7 @@ const allScenarios: Scenario[] = [
 ];
 
 export function getScenarios(
-  categories: ScenarioCategory[] | "all"
+  categories: ScenarioCategory[] | "all",
 ): Scenario[] {
   if (categories === "all") {
     return allScenarios;
@@ -40,4 +40,12 @@ export function listCategories(): Array<{
   }));
 }
 
-export { piiScenarios, injectionScenarios, personaScenarios, exfiltrationScenarios, routingScenarios, spendScenarios, rulesScenarios };
+export {
+  piiScenarios,
+  injectionScenarios,
+  personaScenarios,
+  exfiltrationScenarios,
+  routingScenarios,
+  spendScenarios,
+  rulesScenarios,
+};

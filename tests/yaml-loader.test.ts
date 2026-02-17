@@ -90,7 +90,7 @@ name: Test
   try {
     assert.throws(
       () => loadScenariosFromYaml(testFile),
-      /missing required 'category' field/
+      /missing required 'category' field/,
     );
   } finally {
     unlinkSync(testFile);
@@ -115,7 +115,7 @@ expect:
   try {
     assert.throws(
       () => loadScenariosFromYaml(testFile),
-      /missing required non-empty 'turns' array/
+      /missing required non-empty 'turns' array/,
     );
   } finally {
     unlinkSync(testFile);
@@ -140,10 +140,7 @@ expect:
   writeFileSync(testFile, yaml);
 
   try {
-    assert.throws(
-      () => loadScenariosFromYaml(testFile),
-      /invalid type/
-    );
+    assert.throws(() => loadScenariosFromYaml(testFile), /invalid type/);
   } finally {
     unlinkSync(testFile);
   }
@@ -167,10 +164,7 @@ expect:
   writeFileSync(testFile, yaml);
 
   try {
-    assert.throws(
-      () => loadScenariosFromYaml(testFile),
-      /invalid role/
-    );
+    assert.throws(() => loadScenariosFromYaml(testFile), /invalid role/);
   } finally {
     unlinkSync(testFile);
   }
